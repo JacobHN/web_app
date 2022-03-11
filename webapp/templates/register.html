@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field, render_button, render_remember %}
+
+{% block body %}
+    <div class="container-sm" style="max-width: 600px;">
+        <form method="POST" action="">
+            {{form.hidden_tag()}}
+            <fieldset class="form-group">
+                <div class="d-grid gap-1">
+                    <legend class="border-bottom me-4">Register</legend>
+                    {{render_field(form.email)}}
+                    {{render_field(form.username)}}
+                    {{render_field(form.password)}}
+                    {{render_field(form.confirm_password)}}
+                    {{render_button(form.submit)}}
+                </div>
+            </fieldset>
+
+            <small class="text_muted">
+                forgot password? <a class="ml-3" href="">reset password</a>
+            </small>
+        </form>
+    </div> 
+{% endblock %}

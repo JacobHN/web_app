@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field, render_button, render_remember %}
+
+{% block body %}
+<div>{{post.title}}</div>
+<div>{{post.text}}</div>
+{% for item in images %}
+<div>{{item.image}}</div>
+
+{% endfor %}
+
+
+{% endblock %}

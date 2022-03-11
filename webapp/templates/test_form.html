@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field, render_button, render_remember %}
+
+{% block body %}
+<form method="POST" enctype="multipart/form-data" action="">
+    {{form.hidden_tag()}}
+    <fieldset class="form-group">
+        {{render_field(form.example)}}
+        {{render_button(form.submit)}}
+    </fieldset>    
+</form>
+{% endblock %}

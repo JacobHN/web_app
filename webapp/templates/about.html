@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="d-flex align-items-top">
+    <div class="flex-shrink-0">
+        <img src="{{ url_for('static', filename='profile_images/no_image.jpg') }}" class="rounded-circle" alt="...">
+    </div>
+    <div class="flex-grow-1 ms-3">
+        {% for x in range(100) %}
+        This is a sentence.
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

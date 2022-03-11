@@ -1,0 +1,28 @@
+{% macro render_field(field) %}
+<div class="form-group">
+    {{field.label(**kwargs)|safe}}
+    {% if field.errors %}
+            {{ field(class="form-control form-control-lg is-invalid") |safe }}
+            <div class="invalid-feedback">
+                {% for error in field.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ field(class="form-control form-control-lg") }}
+        {% endif %}
+</div>
+{% endmacro %}
+
+{% macro render_button(button) %}
+<div class="form-group">
+    {{button(class="btn btn-outline-info")}}
+</div>
+{% endmacro %}
+
+{% macro render_remember(remember) %}
+<div class="form-check">
+    {{ remember(class="form-check-input") }}
+    {{ remember.label(class="form-check-label") }}
+</div>    
+{% endmacro %}

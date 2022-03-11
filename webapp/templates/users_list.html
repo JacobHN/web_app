@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field, render_button, render_remember %}
+
+{% block body %}
+{% for user in users %}
+<div>{{user.email}} {{user.username}} {{user.password}}</div>
+{% endfor %}
+{% endblock %}

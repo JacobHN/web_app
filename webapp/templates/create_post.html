@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field, render_button, render_remember %}
+
+{% block body %}
+<form method="POST" enctype="multipart/form-data" action="">
+    {{form.hidden_tag()}}
+    <fieldset class="form-group">
+        <div class="d-grid gap-1">
+        {{render_field(form.title)}}
+        {{render_field(form.text)}}
+        {{form.image(class="form")}}
+        {% if form.image.errors %}
+                {% for error in form.image.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+        {% endif %}
+        {{render_button(form.submit)}}
+        </div>
+    </fieldset>
+</form>
+{% endblock %}

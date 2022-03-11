@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field, render_button, render_remember %}
+
+{% block body %}
+
+<form method="POST" action="">
+    {{form.hidden_tag()}}
+    <fieldset class="form-group">
+        <div class="d-grid gap-1">
+            <legend class="border-bottom me-4">Image</legend>
+            {{render_field(form.image)}}
+            {{render_button(form.submit)}}
+        </div>
+    </fieldset>
+</form>
+
+{% for image in images %}
+<div>{{image}}</div>
+{% endfor %}
+{% endblock %}
