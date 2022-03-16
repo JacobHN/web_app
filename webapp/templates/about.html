@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
+<h1>About</h1>
 <div class="d-flex align-items-top">
     <div class="flex-shrink-0">
-        <img src="{{ url_for('static', filename='profile_images/no_image.jpg') }}" class="rounded-circle" alt="...">
+        <img src="{{ url_for('static', filename='profile_images/main_image2.png') }}" class="" alt="..." style="width:200px">
     </div>
     <div class="flex-grow-1 ms-3">
-        {% for x in range(100) %}
-        This is a sentence.
-        {% endfor %}
+        I am Jacob Hua, A Sac State Graduate with a BS in Computer Science. Currently I am trying to broaden my skills by creating and
+        hosting a blog site.
     </div>
+    
 </div>
+
+<p>
+    This is WIP blog site that I am creating in Flask. Currently implementation of login, registration have been added.
+    Future implementations will include UI redesigns, more dynamic posting, and the ability to upload and download files.
+    Other possible implementations will include a web scraping functionality and more. 
+</p>
 
 {% endblock %}
