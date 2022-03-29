@@ -10,7 +10,7 @@ account = Blueprint('account', __name__)
 
 @account.route("/user", methods=["GET", "POST"])
 def user():
-    return render_template('account.html')
+    return render_template('user.html')
 
 @account.route("/login", methods=["GET", "POST"])
 def login():  
@@ -44,6 +44,12 @@ def register():
         flash(f'accounted created for {form.username.data}', 'success')
         return redirect(url_for('main.home'))
     return render_template('register.html', form=form)
+
+@account.route('/user_files/<int:user_id>')
+def user_files(user_id):
+
+
+    return render_template('user_files.html')
 
 @account.route("/users_list", methods=["GET", "POST"])
 def user_list():

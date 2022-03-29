@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
 
 class Post(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String(200))
+    text = db.Column(db.Text)
     title = db.Column(db.String(100),nullable=False)
     time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
