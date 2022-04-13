@@ -26,6 +26,9 @@
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             {% if current_user.is_authenticated %}
             <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{url_for('account.profile', user_id=current_user.id)}}">Profile</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{{url_for('post.create_post')}}">Create Post</a>
             </li>
             <li class="nav-item">
@@ -60,30 +63,9 @@
     {% endif %}
   {% endwith %}
 
+  {% block body %} 
+  {% endblock %}
 
-    <div class="row">
-      <div class="col-md-8">
-        {% block body %} 
-        {% endblock %}
-      </div>
-      <div class="col-md-3">
-        <div class="d-grid gap-3 mt-3 ml-3">
-          <div class="p-2 bg-light border shadow">
-            <ul>
-              <li>
-                <a aria-current="page" href="{{url_for('main.home')}}">Home</a>
-              </li>
-              <li>
-                <a aria-current="page" href="{{url_for('main.about')}}">About</a>
-              </li>
-              <li>
-                <a aria-current="page" href="{{url_for('post.create_post')}}">Announcements</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
 

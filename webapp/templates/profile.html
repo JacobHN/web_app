@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% from "_formhelpers.html" import render_field, render_button, render_remember %}
+
+
+{% block body %}
+<div class="container-fluid d-grid my-3">
+    <div class="row gap-3">
+        <div class="col-md-3 align-self-start shadow">
+            <div class="d-flex mx-2 my-4 align-items-center">
+                <div class="flex-shrink-0">
+                  <img class="rounded-circle" 
+                  src="{{url_for('static', filename='profile_images_preview/' + user.profile_image)}}" 
+                  alt=""
+                  style="width: 100px; height: 100px;"
+                  >
+                </div>
+                <div class="flex-grow-1 ms-3">
+                 {{user.username}}  
+                </div>
+                {% if current_user.id == user.id %}
+                <a aria-current="page" href="{{url_for('account.account_setting')}}">change account</a>
+                {% endif %}
+            <div>
+                
+            </div>
+        </div>
+            
+
+
+        </div>
+        <div class="d-grid col-md-8 gap-3">
+            <div class="row-md-3 gap-3 shadow">
+                Information
+            </div>
+            <div class="row-md-3 gap-3 shadow">
+                Post
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+{% endblock %}

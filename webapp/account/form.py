@@ -29,3 +29,8 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('email taken')
 
 
+class AccountChangeForm(FlaskForm):
+    email = StringField('Email', validators =[DataRequired(), Email()])
+    username = StringField('Username', validators =[DataRequired()])
+    profile_image = FileField('Profile Image', validators=[FileAllowed(['jpg', 'png'])])
+    submit = SubmitField('submit')

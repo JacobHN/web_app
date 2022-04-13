@@ -41,8 +41,9 @@ def update_post(post_id):
 def single_post(post_id):
     post = Post.query.get_or_404(post_id)
     images = Image.query.filter_by(post=post)
-    
     return render_template('post.html', post=post, images=images)
+
+
 
 @post.route('/images_test', methods=['GET', 'POST'])
 def image_test():
