@@ -17,8 +17,16 @@
                 <div class="flex-grow-1 ms-3">
                  {{user.username}}  
                 </div>
-                {% if current_user.id == user.id %}
-                <a aria-current="page" href="{{url_for('account.account_setting')}}">change account</a>
+                {% if current_user.is_authenticated %}
+                    {% if current_user.id == user.id %}
+                        <a aria-current="page" href="{{url_for('account.account_setting')}}">change account</a>  
+                    {% else %}
+                        {%if current_user.is_following(user) %}
+                        <a href="{{ url_for('account.unfollow', user_id=user.id) }}" class="btn btn-outline-primary">unfollow</a>
+                        {% else %}
+                        <a href="{{ url_for('account.follow', user_id=user.id) }}" class="btn btn-primary">follow</a>
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
             <div>
                 

@@ -84,6 +84,49 @@ def user_files(user_id):
 
     return render_template('user_files.html')
 
+
+@login_required
+@account.route('/follow/<int:user_id>')
+def follow(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    if user is None:
+        flash('error no such user exist')
+        return redirect(url_for('main.home'))
+    if current_user.is_following(user):
+        flash('already following')
+        return redirect(url_for('account.profile', user_id=user.id))
+
+    flash('followed')
+    current_user.follow(user)
+    return redirect(url_for('account.profile', user_id=user.id))
+
+
+@login_required
+@account.route('/unfollow/<int:user_id>')
+def unfollow(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    if user is None:
+        flash('error no such user exist')
+        return redirect(url_for('main.home'))
+    if not current_user.is_following(user):
+        flash('already not following')
+        return redirect(url_for('account.profile', user_id=user.id))
+    flash('unfollowed')
+    current_user.unfollow(user)
+    return redirect(url_for('account.profile', user_id=user.id))
+
+@login_required
+@account.route('/following/<int:user_id>')
+def following(user_id):
+
+
+
+
+    
+    return render_template('following.html')
+
+
+
 @account.route("/users_list", methods=["GET", "POST"])
 def user_list():
     users = User.query.order_by(User.id)

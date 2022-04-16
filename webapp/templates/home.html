@@ -11,7 +11,7 @@
                     src="{{url_for('static', filename='profile_images_preview/' + post.author.profile_image)}}" 
                     style="width: 75px; height: 75px;">
                     </a>
-                    <a class="p-0" href="#">{{ post.author.username }}</a>
+                    <a class="p-0" href="{{url_for('account.profile', user_id = post.author.id)}}">{{ post.author.username }}</a>
 
                 </div>
                 <div class="flex-grow-1 vh-10">
