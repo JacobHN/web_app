@@ -4,6 +4,8 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextA
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 from flask_login import current_user
 
+
+
 class PostForm(FlaskForm):
     title = StringField('Title', validators =[DataRequired()])
     text = TextAreaField('Content')
@@ -13,3 +15,6 @@ class PostForm(FlaskForm):
 class ImageTestForm(FlaskForm):
     image = MultipleFileField('image_text')
     submit = SubmitField('submit')
+
+class CkeditorTestForm(FlaskForm):
+    pass

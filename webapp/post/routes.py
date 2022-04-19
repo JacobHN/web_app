@@ -57,3 +57,22 @@ def image_test():
             db.session.commit()
     images = Image.query.order_by(Image.id)
     return render_template('image_test.html', form=form, images=images)
+
+@post.route('/ck_editor_test', methods=['GET', 'POST'])
+def ck_editor_test():
+    form = PostForm()
+    if form.validate_on_submit():
+        individual_post=Post(title=form.title.data, text=form.text.data, author=current_user)
+        db.session.add(individual_post)
+        db.session.commit()
+        try:
+            for image in form.image.data:
+                file_name = secure_filename(save_image(image))
+                img = Image(image=file_name, post=individual_post)
+                db.session.add(img)
+                db.session.commit()
+        except:
+            pass
+        return redirect(url_for('main.home'))
+
+    return render_template('ck_editor_test.html', form=form)
